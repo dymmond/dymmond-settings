@@ -12,17 +12,15 @@ theme:
       accent: "amber"
       media: "(prefers-color-scheme: light)"
       toggle:
-            icon: "material/lightbulb"
-            name: "Switch to dark mode"
+        icon: "material/lightbulb"
+        name: "Switch to dark mode"
     - scheme: "slate"
       media: "(prefers-color-scheme: dark)"
       primary: "purple"
       accent: "amber"
       toggle:
-            icon: "material/lightbulb-outline"
-            name: "Switch to light mode"
-  favicon: statics/images/favicon.ico
-  logo: statics/images/logo-white.svg
+        icon: "material/lightbulb-outline"
+        name: "Switch to light mode"
   features:
     - search.suggest
     - search.highlight
@@ -45,7 +43,7 @@ plugins:
       data: data
 
 nav:
-  - Introduction: "index.md"
+  - Dymmond Settings: "index.md"
   - Contributing: "contributing.md"
   - Sponsorship: "sponsorship.md"
   - Release Notes: "release-notes.md"

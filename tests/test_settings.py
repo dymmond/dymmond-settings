@@ -1,3 +1,4 @@
+from dymmond_settings import __version__
 from dymmond_settings.base import Settings
 from dymmond_settings.conf import settings
 from dymmond_settings.enums import EnvironmentType
@@ -16,13 +17,25 @@ def test_test_dict():
 
     assert settings_dict["debug"] is False
 
+    assert settings_dict == {
+        "debug": False,
+        "environment": EnvironmentType.PRODUCTION,
+        "version": __version__,
+    }
+
 
 def test_test_tuple():
     settings = Settings()
 
-    settings_dict = settings.tuple()
+    settings_tuple = settings.tuple()
 
-    assert len(settings_dict) == 3
+    assert settings_tuple == [
+        ("debug", False),
+        ("environment", EnvironmentType.PRODUCTION),
+        ("version", __version__),
+    ]
+
+    assert len(settings_tuple) == 3
 
 
 def test_conf_settings():

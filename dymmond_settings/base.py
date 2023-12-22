@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from dataclasses import asdict, astuple, dataclass, field
-from typing import Any, Dict, Optional, Tuple, Union
+from dataclasses import asdict, dataclass, field
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from typing_extensions import Annotated, Doc
 
@@ -23,11 +23,13 @@ class BaseSettings:
             return asdict(self)
         return {k: v for k, v in self.__dict__.items() if v is not None}
 
-    def tuple(self) -> Tuple[Any]:
+    def tuple(self, exclude_none: bool = False) -> List[Tuple[str, Any]]:
         """
         Dumps all the settings into a tuple.
         """
-        return astuple(self)
+        if not exclude_none:
+            return list(self.__dict__.items())
+        return [(k, v) for k, v in self.__dict__.items() if v is not None]
 
 
 @dataclass

@@ -74,6 +74,8 @@ but **you are not entitled to use them**.
 
 These defaults can be overridden at any given time, of course.
 
+### Attributes
+
 * **debug** - Boolean flag generally used to indicate if the application should be in debug mode
 or not. This is particularly useful if you want to separate some settings by environment.
 
@@ -90,7 +92,96 @@ It defaults to the current version of `dymmond_settings` if nothing is provided.
 
     <sup>Default: `dymmond_settings.__version__`</sup>
 
-### How to use it
+### Functions
+
+Although Python `dataclasses` also provides that same functionality for you, `dymmond_settings`
+makes it easier for you to use it.
+
+All `dymmond_settings` objects can be used with any of the normal `dataclasses` functionalities
+and applications.
+
+#### dict()
+
+This simply converts your settings module into a python dictionary. This provides the same level
+of functionality of `asdict` from the Python `dataclasses` module when `exclude_none` is set
+to `False` (default).
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.dict()
+```
+
+Or if you want to exclude the `None` values.
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.dict(exclude_none=True)
+```
+
+#### tuple()
+
+This simply converts your settings module into a python tuple but is slightly different from the
+`astuple` from Python `dataclasses` module.
+
+The default from `dataclasses` provides a tuple with all the values of the object provided `astuple`
+whereas `dymmond_settings` tuple function provides **a list of tuples key/pair valued**.
+
+As per [dict](#dict) functionality, the `tuple()` also provides a `exclude_none` in case you want
+a list attributes with the values set.
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.tuple()
+```
+
+Or if you want to exclude the `None` values.
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.tuple(exclude_none=True)
+```
+
+## How to use it
 
 There are many ways you can use the settings and all of them valid. Here we show just a few examples
 how to use it.
@@ -139,10 +230,16 @@ And that is it, really! Although looking very simple, there is a lot of magic ha
 that you don't need to worry about.
 
 Now, because we made the application aware, we are also able to use the `settings` object provided
-by the `dymmond_settings` anywhere in your code base by simply importing it. Like this:
+by the `dymmond_settings` anywhere in your code base by simply importing it.
+
+Like this:
 
 ```python
 from dymmond_settings import settings
+
+
+def get_my_settings() -> str:
+    return settings.my_setting
 ```
 
 This simple `settings` is very powerful and `lazy`, which makes it perfect if you want to use it
