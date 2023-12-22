@@ -42,7 +42,7 @@ To develop for Dymmond Settings, create a fork of the [Dymmond Settings reposito
 After, clone your fork with the follow command replacing `YOUR-USERNAME` wih your GitHub username:
 
 ```shell
-$ git clone https://github.com/YOUR-USERNAME/dymmond_settings
+$ git clone https://github.com/YOUR-USERNAME/dymmond-settings
 ```
 
 ### Install the project dependencies
@@ -73,14 +73,10 @@ Because Dymmond Settings uses pytest, any additional arguments will be passed. M
 
 For example, to run a single test_script:
 
-```shell
-$ scripts/test tests/test_apiviews.py
-```
-
 To run the linting, use:
 
 ```shell
-$ scripts/format
+$ scripts/lint
 ```
 
 ### Documentation

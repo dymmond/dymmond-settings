@@ -20,6 +20,8 @@
 
 ---
 
+**Documentation**: [https://settings.dymmond.com](https://settings.dymmond.com) 📚
+
 **Source Code**: [https://github.com/dymmond/dymmond-settings](https://github.com/dymmond/dymmond-settings)
 
 **The official supported version is always the latest released**.

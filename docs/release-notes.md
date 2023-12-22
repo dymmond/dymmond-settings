@@ -1,9 +1,6 @@
 # Release Notes
 
-## 0.1.0
+## 1.0.0
 
-### Added
-
-### Changed
-
-### Fixed
+Initial release containing all the information about
+the `dymmond-settings` package.

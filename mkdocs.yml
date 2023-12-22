@@ -8,8 +8,8 @@ theme:
   language: en
   palette:
     - scheme: "default"
-      primary: "purple"
-      accent: "amber"
+      primary: "light blue"
+      accent: "blue"
       media: "(prefers-color-scheme: light)"
       toggle:
         icon: "material/lightbulb"

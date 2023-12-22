@@ -2,9 +2,6 @@
 
 Do you like **Dymmond Settings** and would like to help Dymmond Settings, other user and the author?
 
-## 🐦 Follow Dymmond Settings on Twitter
-
-
 ## ⭐ Star **Dymmond Settings** on GitHub
 
 Giving a star to Dymmond Settings is very simple and helps promoting the work across the developers around the world.
@@ -23,6 +20,11 @@ You can click on "***watch***" and select "***custom***" -> "***Releases***"or a
 interesting to you.
 
 ## 💬 Join the official Dymmond Settings discord channel
+
+Our official chat is on discord, we find it very useful and free for people to discuss issues, helping and contributing
+in a more organised manner.
+
+<a href="https://discord.gg/eMrM9sWWvu" target="_blank">Esmerald discord channel</a>. Join us! 🗸
 
 ## 🔥 Sponsor the author
 
