@@ -15,21 +15,35 @@ class BaseSettings:
     Base of all the settings for any system.
     """
 
-    def dict(self, exclude_none: bool = False) -> Dict[str, Any]:
+    def dict(self, exclude_none: bool = False, upper: bool = False) -> Dict[str, Any]:
         """
         Dumps all the settings into a python dictionary.
         """
-        if not exclude_none:
-            return asdict(self)
-        return {k: v for k, v in self.__dict__.items() if v is not None}
+        original = asdict(self)
 
-    def tuple(self, exclude_none: bool = False) -> List[Tuple[str, Any]]:
+        if not exclude_none:
+            if not upper:
+                return original
+            return {k.upper(): v for k, v in original.items()}
+
+        if not upper:
+            return {k: v for k, v in original.items() if v is not None}
+        return {k.upper(): v for k, v in original.items() if v is not None}
+
+    def tuple(self, exclude_none: bool = False, upper: bool = False) -> List[Tuple[str, Any]]:
         """
         Dumps all the settings into a tuple.
         """
+        original = asdict(self)
+
         if not exclude_none:
-            return list(self.__dict__.items())
-        return [(k, v) for k, v in self.__dict__.items() if v is not None]
+            if not upper:
+                return list(original.items())
+            return list({k.upper(): v for k, v in original.items()}.items())
+
+        if not upper:
+            return [(k, v) for k, v in original.items() if v is not None]
+        return [(k.upper(), v) for k, v in original.items() if v is not None]
 
 
 @dataclass
