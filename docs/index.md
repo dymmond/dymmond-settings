@@ -108,6 +108,11 @@ This simply converts your settings module into a python dictionary. This provide
 of functionality of `asdict` from the Python `dataclasses` module when `exclude_none` is set
 to `False` (default).
 
+**Parameters**:
+
+- **exclude_none** - Excludes the values containing `None`.
+- **upper** - Boolean flag indicating if the keys should be in upper case.
+
 ```python
 from dataclasses import dataclass, field
 
@@ -140,6 +145,23 @@ my_settings = AppSettings()
 my_settings.dict(exclude_none=True)
 ```
 
+Or if you want the keys to be upper case.
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.dict(upper=True)
+```
+
 #### tuple()
 
 This simply converts your settings module into a python tuple but is slightly different from the
@@ -150,6 +172,11 @@ whereas `dymmond_settings` tuple function provides **a list of tuples key/pair v
 
 As per [dict](#dict) functionality, the `tuple()` also provides a `exclude_none` in case you want
 a list attributes with the values set.
+
+**Parameters**:
+
+- **exclude_none** - Excludes the values containing `None`.
+- **upper** - Boolean flag indicating if the keys should be in upper case.
 
 ```python
 from dataclasses import dataclass, field
@@ -181,6 +208,23 @@ class AppSettings(Settings):
 
 my_settings = AppSettings()
 my_settings.tuple(exclude_none=True)
+```
+
+Or if you want the tuple to contain the *keys* in upper case.
+
+```python
+from dataclasses import dataclass, field
+
+from dymmond_settings import Settings
+
+
+@dataclass
+class AppSettings(Settings):
+    ...
+
+
+my_settings = AppSettings()
+my_settings.tuple(upper=True)
 ```
 
 ## How to use it
