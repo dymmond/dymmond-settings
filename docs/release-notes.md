@@ -2,6 +2,8 @@
 
 ## 1.0.1
 
+### Added
+
 - Add support for `upper` when using `.dict` and `.tuple()` functions
 of the settings. This allows to return the keys in upper case mode.
 
