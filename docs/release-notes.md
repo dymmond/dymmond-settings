@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.0.2
+
+### Changed
+
+- Internal cleaning of functional wrapper.
+
 ## 1.0.1
 
 ### Added
