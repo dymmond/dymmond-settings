@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.0.3
+
+### Changed
+
+- Added `OVERRIDE_SETTINGS_MODULE_VARIABLE` to allow different variable names for `SETTINGS_MODULE`.
+
 ## 1.0.2
 
 ### Changed
