@@ -7,7 +7,8 @@ from dymmond_settings.module_loading import import_string
 if TYPE_CHECKING:
     from dymmond_settings.base import Settings
 
-ENVIRONMENT_VARIABLE = "SETTINGS_MODULE"
+OVERRIDE_VARIABLE = "OVERRIDE_SETTINGS_MODULE_VARIABLE"
+ENVIRONMENT_VARIABLE = os.environ.get(OVERRIDE_VARIABLE) or "SETTINGS_MODULE"
 
 
 class LazySettings(LazyObject):
