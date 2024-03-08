@@ -25,7 +25,7 @@ class LazySettings(LazyObject):
         configured settings manually.
         """
         settings_module: str = os.environ.get(
-            ENVIRONMENT_VARIABLE, "dymmond_settings.global_settings.Settings"
+            ENVIRONMENT_VARIABLE, "dymmond_settings.base.Settings"
         )
 
         settings: Type["Settings"] = import_string(settings_module)
