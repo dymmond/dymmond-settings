@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.0.4
+
+- Fix global settings reference.
+
 ## 1.0.3
 
 ### Changed
