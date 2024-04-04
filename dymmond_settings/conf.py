@@ -1,4 +1,5 @@
 import os
+from functools import lru_cache
 from typing import TYPE_CHECKING, Any, Optional, Type
 
 from dymmond_settings.functional import LazyObject, empty
@@ -9,6 +10,17 @@ if TYPE_CHECKING:
 
 OVERRIDE_VARIABLE = "OVERRIDE_SETTINGS_MODULE_VARIABLE"
 ENVIRONMENT_VARIABLE = os.environ.get(OVERRIDE_VARIABLE) or "SETTINGS_MODULE"
+
+
+@lru_cache
+def reload_settings() -> Type["Settings"]:
+    """
+    Reloads the global settings.
+    """
+    settings_module: str = os.environ.get(ENVIRONMENT_VARIABLE, "dymmond_settings.base.Settings")
+    settings: Type["Settings"] = import_string(settings_module)
+
+    return settings
 
 
 class LazySettings(LazyObject):
@@ -24,16 +36,21 @@ class LazySettings(LazyObject):
         is used the first time settings are needed, if the user hasn't
         configured settings manually.
         """
-        settings_module: str = os.environ.get(
-            ENVIRONMENT_VARIABLE, "dymmond_settings.base.Settings"
-        )
 
-        settings: Type["Settings"] = import_string(settings_module)
+        settings: Type["Settings"] = reload_settings()
 
         for setting, _ in settings().dict().items():
             assert setting.islower(), "%s should be in lower case." % setting
 
         self._wrapped = settings()
+
+    def configure(self, override_settings: "LazySettings") -> None:
+        """
+        Making sure the settings are overriden by the settings
+        provided by a given application and therefore use it as the application
+        global.
+        """
+        self._wrapped = override_settings
 
     def __repr__(self: "LazySettings") -> str:
         # Hardcode the class name as otherwise it yields 'Settings'.
