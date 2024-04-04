@@ -1,8 +1,17 @@
 # Release Notes
 
+## 1.0.5
+
+### Added
+
+- `reload_settings` allowing to reset the internals of the default global settings.
+- `configure` allowing to set a new global lazy settings.
+
 ## 1.0.4
 
-- Fix global settings reference.
+### Fixed
+
+- Global settings reference.
 
 ## 1.0.3
 
